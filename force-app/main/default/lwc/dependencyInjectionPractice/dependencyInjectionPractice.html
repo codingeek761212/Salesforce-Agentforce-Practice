@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div>
+            <template for:each={buttonGroup} for:item="button">
+                <div key={button.key}>
+                    <lightning-button label={button.label} onclick={handlePayment} variant={button.variant}></lightning-button>
+                </div>
+            </template>
+        </div>
+        <div>{selectedMode}</div>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+        <lightning-tabset variant="scoped" active-tab-value="tab1">
+            <lightning-tab label="Account Details">
+                <c-custom-multiselect-combobox object-api-name="Account" onreceivedata={handleReceivedData}></c-custom-multiselect-combobox>
+                <c-dynamic-s-object-form object-api-name="Account"></c-dynamic-s-object-form>
+            </lightning-tab>
+            <lightning-tab label="Contact Details">
+                <c-custom-multiselect-combobox object-api-name="Contact" onreceivedata={handleReceivedData}></c-custom-multiselect-combobox>
+            </lightning-tab>
+        </lightning-tabset>
+
+
+    </lightning-card>
+</template>

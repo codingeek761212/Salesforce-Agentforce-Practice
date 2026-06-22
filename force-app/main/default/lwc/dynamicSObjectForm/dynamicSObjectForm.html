@@ -1,0 +1,24 @@
+<template>
+    <div class="outer-container">
+        <div>
+            <lightning-button-icon icon-name="utility:edit" size="small" variant="container" onclick={EditForm}></lightning-button-icon>
+        </div>
+        <div class="inner-container">
+            <template if:true={editMode}>
+                <lightning-record-edit-form object-api-name={objectApiName} record-id={recordId}>
+                    <template for:each={dynamicData.fieldsName} for:item="field">
+                        <lightning-input-field key={field}></lightning-input-field>
+                    </template>
+                </lightning-record-edit-form>
+            </template>
+
+            <template if:false={editMode}>
+                <lightning-record-view-form object-api-name={objectApiName} record-id={recordId}>
+                    <template for:each={ynamicData.fieldsName} for:item="field">
+                        <lightning-output-field key={field}></lightning-output-field>
+                    </template>
+                </lightning-record-view-form>
+            </template>
+        </div>
+    </div>
+</template>

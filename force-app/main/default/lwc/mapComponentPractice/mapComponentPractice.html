@@ -1,0 +1,21 @@
+<!-- wireGetRelatedListRecords.html -->
+<template>
+  <lightning-card title="wireGetRelatedListRecords">
+    <!--<template lwc:if={records}>
+      <div class="slds-m-around_medium">
+        <template for:each={records} for:item="rec">
+          <p key={rec.fields.Id.value}>Id: {rec.fields.Id.value}</p>
+          <p key={rec.fields.Id.value}>Name: {rec.fields.Name.value}</p>
+          <p key={rec.fields.Id.value}>Street: {rec.fields.Street.value}</p>
+          <p key={rec.fields.Id.value}>City: {rec.fields.City.value}</p>
+          <p key={rec.fields.Id.value}>Postal Code: {rec.fields.PostalCode.value}</p>
+        </template>
+      </div>
+    </template>-->
+    <div class="slds-map_container">
+    <div class="slds-map">
+      <div id="GoogleMapID" title="Google Maps iframe" src="https://sfdc-map.surge.sh/"></div>
+    </div>
+  </div>
+  </lightning-card>
+</template>

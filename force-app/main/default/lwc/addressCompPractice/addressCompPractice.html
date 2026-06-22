@@ -1,0 +1,50 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-button label="Open Modal" onclick={handleModal} variant="brand"></lightning-button>
+            <template if:true={modalOpen}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                    class="slds-modal slds-fade-in-open slds-modal_small">
+                    <div class="slds-modal__container customHeight">
+                        <div class="slds-p-top_small ">
+                            <lightning-button-icon icon-name="utility:close" alternative-text="Close" variant="bare"
+                                title="Close" onclick={closeModal}
+                                class="slds-m-right_small slds-button slds-button_icon slds-modal__close"
+                                size="small">
+                            </lightning-button-icon>
+                        </div>
+                    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-12" style="width:4%">
+                                <lightning-icon icon-name="standard:live_chat_visitor" class="custom-icon-color"
+                                    size="small"></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_6-of-12">
+                                <div>
+                                    <span>{userName}</span>
+                                </div>
+                                <div class="slds-m-top_small">
+                                    <span>{buttonLabel}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-align_absolute-center slds-m-top_large">
+                            <div class="search-bar">
+                                <lightning-icon icon-name="utility:agent_astro" alternative-text="agent_astro" size="small" class="agent-icon">
+                                </lightning-icon>
+                                <input class="input-box" type="text"
+                                    placeholder="Describe your task or ask a question..." />
+                                <lightning-button-icon icon-name="utility:send" class="send-button" variant="bare"
+                                    alternative-text="Send" onclick={handleSend} title="Send">
+                                </lightning-button-icon>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

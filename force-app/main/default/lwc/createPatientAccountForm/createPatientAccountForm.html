@@ -1,0 +1,106 @@
+<template>
+    <lightning-card>
+        <div class="heading">
+            <h1><Strong>
+                <span>Create an Account</span>
+            </Strong></h1>
+        </div>
+        <div class="formContainer">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2">
+                    <div>
+                        <lightning-input label="Account Name" value={accountName} onchange={handleNameChange}></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input label="Account Email" value={accountEmail} onchange={handleEmailChange}></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-combobox label="Account Industry"
+                                            name="industry"
+                                            value={accountIndustry}
+                                            onchange={handleIndustryChange}
+                                            options={industryOptions}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <div>
+                        <lightning-input label="Account Phone" value={accountPhone} onchange={handlePhoneChange}></lightning-input>
+                    </div>
+                    <div>
+                        <label class="customLabel">Active</label>
+                        <lightning-input type="checkbox" label="" value={isActive} onchange={handleAccountActiveChange}></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-combobox label="Account Type"
+                                            name="type"
+                                            value={accountType}
+                                            onchange={handleTypeChange}
+                                            options={typeOptions}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <div class="addresses-list">
+                    <template for:each={addresses} for:item="address" for:index="index">
+                        <div key={address.id} class="address-card slds-m-bottom_large">
+                            <div class="slds-box slds-box_small">
+                                <div class="slds-grid slds-wrap slds-p-around_medium">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <h3 class="slds-text-heading_small">Address {address.addressNumber}</h3>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <lightning-input-address
+                                            show-address-lookup
+                                            address-label="Address"
+                                            street-label="Street"
+                                            city-label="City"
+                                            country-label="Country"
+                                            province-label="Province"
+                                            postal-code-label="PostalCode"
+                                            data-id={address.id}
+                                            street={address.street}
+                                            city={address.city}
+                                            province={address.province}
+                                            postal-code={address.postalCode}
+                                            country={address.country}
+                                            onchange={handleAddressChange}
+                                            onblur={handleAddressBlur}
+                                            class="address-input">
+                                        </lightning-input-address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="button-group slds-m-top_large">
+                    <lightning-button 
+                        label="Add Address" 
+                        icon-name="utility:add" 
+                        icon-position="left"
+                        variant="brand" 
+                        onclick={addNewAddress}
+                        title="Click to add another address">
+                    </lightning-button>
+                    
+                    <button class="slds-button slds-button_neutral slds-m-left_small" onclick={displayAddresses} title="View all stored addresses">
+                        <lightning-icon icon-name="utility:preview" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        View Stored Data
+                    </button>
+
+                    <lightning-button label="Create Account" onclick={saveAccountRecord}></lightning-button>
+                </div>
+
+                <template if:true={showDebugInfo}>
+                    <div class="slds-m-top_large slds-p_medium slds-box_small slds-theme_alert-texture">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Stored Addresses Data:</h3>
+                        <pre class="debug-output">{debugInfo}</pre>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
